@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail pokémon {{pokemon.nom}}
+{% endblock %}
+
+{% block body %}
+<a class="btn btn-success mt-3" href="{{ path ('app_pokemon')}}">
+Retour au listing</a>
+<h1 class="text-center"> Détail du pokémon: {{pokemon.nom}}</h1>
+
+<div class="text-center">
+<a href="{{path ('app_detail_pokemon', {'id': pokemon.id -1})}}" class="btn btn-success">&#60;</a>
+
+<img class="pix-detail" src={{asset('uploads/pokemons/'~pokemon.picture)}}>
+<a href="{{path ('app_detail_pokemon', {'id': pokemon.id +1})}}" class="btn btn-success">&#62;</a>
+</div>
+
+{% for type in pokemon.type %}
+<div class="text-center mt-2" style="background-color: {{type.color}}">{{type.libelle}}</div>
+{% endfor %}
+<div class="text-center">{{ pokemon.description }}</div>
+<div class="text-center">
+<ul>
+<li>
+<h1>Attaque: {{pokemon.attaque}}</h1>
+<div class="progress">
+  <div class="progress-bar bg-danger " style="min-width: {{pokemon.attaque}}%" role="progressbar"  aria-valuenow="{{pokemon.attaque}}" aria-valuemin="0" aria-valuemax="100">{{pokemon.attaque}}</div>
+</div>
+</li>
+<li>
+<h1>Défense: {{pokemon.defense}}</h1>
+<div class="progress">
+  <div class="progress-bar bg-success " style="min-width: {{pokemon.defense}}%" role="progressbar"  aria-valuenow="{{pokemon.defense}}" aria-valuemin="0" aria-valuemax="100">{{pokemon.defense}}</div>
+</div>
+</li>
+<li>
+<h1>Points de vie: {{pokemon.pointDeVie}}</h1>
+<div class="progress">
+  <div class="progress-bar bg-info " style="min-width: {{pokemon.pointDeVie}}%" role="progressbar"  aria-valuenow="{{pokemon.pointDeVie}}" aria-valuemin="0" aria-valuemax="100">{{pokemon.pointDeVie}}</div>
+</div>
+
+</li>
+</ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Editer le Pokémon
+	{{pokemon.nom}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="example-wrapper">
+		<h1>Editer le Pokémon
+			{{pokemon.nom}}</h1>
+		<a class="btn btn-success" href="{{ path('app_pokemon') }}">Retour</a>
+
+		{{ form_start(form) }}
+
+		{{ form_row(form.nom) }}
+		{{ form_row(form.description) }}
+		{{ form_row(form.attaque) }}
+		{{ form_row(form.defense) }}
+		{{ form_row(form.pointDeVie) }}
+		<div>
+			<h2>Image actuelle</h2>
+			<img src="{{ asset('uploads/pokemons/'~pokemon.picture) }}" class="img-thumbnail rounded" alt="image de {{pokemon.nom}}">
+			<p>Pour changer l'image actuelle, veuillez en téléverser une autre</p>
+		</div>
+		{{ form_row(form.picture) }}
+
+		{{ form_end(form) }}
+
+
+	</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="card col-md-11 offset-md-1 mt-2 mb-2" style="width: 18rem; box-shadow: 0px 0px 10px #000000 ">
+					<img src="{{ asset('uploads/pokemons/'~pokemon.picture) }}" class="card-img-top m-auto" alt="image de {{pokemon.nom}}">
+					<h5 class="card-title">{{pokemon.nom}}</h5>
+					<div class="text-center">
+						{% for type in pokemon.type %}
+							<a class="btn mt-3 mb-3 mx-auto" style="background-color: {{type.color}};">{{type.libelle}}</a>
+						{% endfor %}
+					</div>
+					<a href="{{ path('app_detail_pokemon', {'id':pokemon.id}) }}" class="btn btn-primary mx-auto mb-2">Détail du Pokémon</a>
+					<a href="{{ path('app_edit_pokemon', {'id':pokemon.id}) }}" class="btn btn-warning mx-auto mb-2">Modifier le Pokémon</a>
+					<a href="{{ path('app_delete_pokemon', {'id':pokemon.id}) }}" class="btn btn-danger mx-auto mb-2">Supprimer le Pokémon</a>
+				</div>

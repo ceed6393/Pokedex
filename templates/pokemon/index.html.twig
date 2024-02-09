@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokedex
+{% endblock %}
+
+{% block body %}
+	<h1>Les pokémon du Pokédex</h1>
+	
+	<a class="btn btn-success mb-2" href="{{ path('app_pokemon_ajout') }}">Ajouter un Pokémon</a>
+	<a class="btn btn-success mb-2" href="{{ path('app_search') }}">Accéder au moteur de recherche</a>
+
+<div class="row">
+	{% if pokemon|length == 0%}
+		<div class="text-center text-danger">
+			Aucun Pokémon dans le Pokédex...
+		</div>
+	{% else %}
+		<div class="row">
+
+			{% for pokemon in pokemon %}
+				{% include 'pokemon/parts/pokemon-card.html.twig' with {'pokemon': pokemon}%}
+			{% endfor %}
+			</div>
+			{% endif %}
+			</div>
+{% endblock %}

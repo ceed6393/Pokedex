@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Rechercher un pokémon</h1>
+{{form_start(form)}}
+{{form_row(form.textSearch)}}
+{{form_row(form.typeSearch)}}
+
+<div class="row">
+<div class="col-md-6">{{ form_row(form.pvMin)}}</div>
+<div class="col-md-6">{{ form_row(form.pvMax)}}</div>
+</div>
+<div class="row">
+<div class="col-md-6">{{ form_row(form.attaqueMin)}}</div>
+<div class="col-md-6">{{ form_row(form.attaqueMax)}}</div>
+</div>
+<div class="row">
+<div class="col-md-6">{{ form_row(form.defenseMin)}}</div>
+<div class="col-md-6">{{ form_row(form.defenseMax)}}</div>
+</div>
+{{form_end(form)}}
+
+{% if research %}
+<h2>Résultats de la recherche</h2>
+		<div class="row">
+
+			{% for pokemon in pokemon %}
+				{% include 'pokemon/parts/pokemon-card.html.twig' with {'pokemon': pokemon}%}
+			{% endfor %}
+			</div>
+			   {% else %}
+<h2>J'attends votre recherche !</h2>
+{% endif %}
+</div>
+{% endblock %}

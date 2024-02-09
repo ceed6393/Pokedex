@@ -1,0 +1,16 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Ajouter un Pokémon
+{% endblock %}
+
+{% block body %}
+
+	<div class="example-wrapper">
+		<h1>Ajouter un Pokémon</h1>
+		<a class="btn btn-success" href="{{ path('app_pokemon') }}">Retour</a>
+
+		{{ form_start(form) }}
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
